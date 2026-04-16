@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* 🌈 Brand Variables */
+:root {
+  --bg: #faf4ec;
+  --color: var(--text);
+  --text-h: #08060d;
+
+  --accent-pink: #f9a8d4;
+  --accent-purple: #c084fc;
+
+  --border: #e5e4e7;
+
+  --sans: "Inter", system-ui, sans-serif;
+  --heading: "Inter", system-ui, sans-serif;
+
+  font: 16px/150% var(--sans);
+  letter-spacing: 0;
+  color: var(--text);
+    background: var(--bg);
+
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ✅ Clean root layout */
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border: none;
+  min-height: 100vh;
+}
+
+/* 🧠 Typography (NO font-size here ❗) */
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  margin: 0;
+}
+
+/* ❌ REMOVE font-size overrides (IMPORTANT) */
+/* h1 { font-size: 72px; } ❌ */
+/* h2 { font-size: 28px; } ❌ */
+
+/* Paragraph */
+p {
+  color: #151415;
+  font-size: 16px;
+}
+
+/* ✨ Buttons */
+.btn-primary {
+  background: linear-gradient(90deg, #f9a8d4, #c084fc);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+/* 🧱 Container */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+
+
+/* 🔥 GETHYPED Logo */
+.logo-wrapper {
+  width: 160px;
+  transform: rotate(-2deg);
+}
+
+.logo-shape {
+  background: #faf4ec;
+  padding: 10px 24px;
+  border-radius: 18px;
+  transform: skewX(-12deg);
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.logo-text {
+  transform: skewX(12deg);
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+  color: black;
+  text-align: center;
+}
+
+/* prevent overflow issues */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* fix gsap rendering */
+.card {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
