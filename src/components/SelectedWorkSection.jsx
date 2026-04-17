@@ -116,11 +116,16 @@ function WorkCard({ item }) {
         <div className="group relative cursor-pointer">
 
           <div
-            className={`${item.color} rounded-[24px] px-5 md:px-6 pt-16 md:pt-20 pb-6 md:pb-7 shadow-xl relative overflow-hidden transition-all duration-300 ease-out group-hover:shadow-2xl`}
-            style={{
-              clipPath: "polygon(0 35%, 100% 8%, 100% 100%, 0% 100%)"
-            }}
-          >
+  className={`${item.color} rounded-[24px] px-5 md:px-6 pt-16 md:pt-20 pb-6 md:pb-7 shadow-xl relative overflow-hidden transition-all duration-300 ease-out group-hover:shadow-2xl`}
+  style={{
+    WebkitMaskImage: "url('/mask.svg')",
+    WebkitMaskSize: "100% 100%",
+    WebkitMaskRepeat: "no-repeat",
+    maskImage: "url('/mask.svg')",
+    maskSize: "100% 100%",
+    maskRepeat: "no-repeat",
+  }}
+>
 
             {/* TEXT */}
             <h3 className="text-white text-[18px] md:text-[22px] font-bold leading-tight max-w-[85%]">
@@ -132,7 +137,7 @@ function WorkCard({ item }) {
             </div>
 
             {/* ARROW */}
-            <div className="absolute top-[18px] md:top-[25px] right-[12px] md:right-[14px] w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center shadow-md overflow-hidden">
+            <div className="absolute top-[18px] md:top-[25px] right-[10px] md:right-[14px] w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center shadow-md overflow-hidden">
 
               <span className="absolute text-black text-lg md:text-xl font-bold transition-all duration-300 ease-out group-hover:translate-x-4 group-hover:-translate-y-4 group-hover:opacity-0">
                 ↗

@@ -69,8 +69,65 @@ function FloatingLogos() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden"
-    />
+      className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden py-0"
+    ><div className="max-w-[1200px] mx-auto px-6 pt-28 pb-20 text-center relative z-20">
+    <h2 className="text-[52px] md:text-[90px] font-bold leading-[1.05] tracking-tight">
+      Let’s Get Hyped!
+    </h2>
+
+    <div className="mt-10 flex justify-center gap-4 flex-wrap">
+
+      <a
+  href="mailto:info@gethyped.nl"
+  className="group inline-flex items-center gap-2 px-6 py-3 border border-black rounded-xl overflow-hidden"
+>
+  <div className="flex items-center gap-2 transition-all duration-500 group-hover:-skew-x-6">
+
+  {/* TEXT */}
+  <span>
+    Mail ons direct
+  </span>
+
+  {/* ICON */}
+  <span className="w-5 h-5 flex items-center justify-center rounded-[6px] text-[10px] bg-black text-white transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:translate-x-1 group-hover:-rotate-12">
+    →
+  </span>
+
+</div>
+</a>
+
+      <div className="hidden md:block">
+  <a href="#" className="group inline-block">
+    
+    <div className="relative flex items-center px-5 h-[44px] 
+    rounded-[10px] bg-[#fa5424] overflow-hidden
+    transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+    
+    group-hover:skew-x-6 group-hover:-rotate-2 group-hover:scale-105">
+
+      {/* INNER CONTENT */}
+      <div className="flex items-center gap-2 
+      transition-all duration-500 
+      group-hover:-skew-x-6">
+
+        {/* TEXT */}
+        <span className="text-black font-semibold">
+          Get Results
+        </span>
+
+        {/* ICON */}
+        <span className="flex items-center justify-center bg-white rounded-[6px] px-2 py-[3px] text-xs">
+          🔥
+        </span>
+
+      </div>
+
+    </div>
+  </a>
+</div>
+
+    </div>
+  </div></div>
   );
 }
 
