@@ -1,10 +1,10 @@
 export default function Hero() {
   return (
-    <section className=" pt-20 pb-20 overflow-hidden">
+    <section className="pl-0 pt-30 pb-20 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
 
         {/* TEXT */}
-     <div className="w-full max-w-[1200px] px-6">
+     <div className="w-full max-w-[1200px] p-0">
 
   <h1 className="text-[46px] md:text-[70px] lg:text-[80px] font-bold leading-[0.9] tracking-[-3px] text-black">
     Get Hyped.Get <br />

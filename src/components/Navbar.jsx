@@ -1,13 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(true);
+const [lastScrollY, setLastScrollY] = useState(0);
+
+useEffect(() => {
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    // small threshold to prevent jitter
+    if (Math.abs(currentScrollY - lastScrollY) < 10) return;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 80) {
+      setShow(false); // scrolling down
+    } else {
+      setShow(true); // scrolling up
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [lastScrollY]);
 
   return (
-    <nav className="w-full pt-7 py-2 px-6 relative z-50">
-      <div className="max-w-[1200px] h-[44px] mx-auto flex items-center justify-between">
+    <nav
+  className={`fixed top-0 left-0 w-full pt-7 py-2 px-6 z-50 transition-transform duration-300 ${
+    show ? "translate-y-0" : "-translate-y-full"
+  }`}
+>
+      <div className="max-w-[1200px] h-[40px] mx-auto flex items-center justify-between">
 
         {/* Logo */}
         <div className="-rotate-2">
@@ -16,24 +42,24 @@ export default function Navbar() {
 
         {/* Center Menu (Desktop) */}
    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2">
-  <div className="bg-white px-3 py-2 rounded-[8px] flex gap-2 text-sm font-medium">
+  <div className="bg-white px-2 py-1 rounded-[6px] flex gap-1 text-xs font-medium">
 
     {["Expertises", "Work", "About", "Contact"].map((item, i) => (
       <a
         key={i}
         href="#"
-        className="group relative h-[36px] px-5 overflow-hidden rounded-[8px] flex items-center justify-center bg-white"
+        className="group relative h-[28px] px-3 overflow-hidden rounded-[6px] flex items-center justify-center bg-white"
       >
 
         {/* TOP TEXT */}
-        <span className="inline-flex h-[36px] items-center justify-center text-neutral-900 transition duration-500 group-hover:-translate-y-[150%]">
+        <span className="inline-flex h-[28px] items-center justify-center text-neutral-900 transition duration-500 group-hover:-translate-y-[140%]">
           {item}
         </span>
 
         {/* HOVER LAYER */}
         <span className="absolute inset-0 flex items-center justify-center text-white translate-y-[100%] transition duration-500 group-hover:translate-y-0">
 
-          {/* background fill from bottom-right */}
+          {/* background fill */}
           <span className="absolute inset-0 translate-y-full -skew-y-12 scale-y-0 bg-black origin-bottom-right transition duration-500 group-hover:translate-y-0 group-hover:scale-150"></span>
 
           {/* text */}
@@ -53,7 +79,7 @@ export default function Navbar() {
     <div className="hidden md:block">
   <a href="#" className="group inline-block">
     
-    <div className="relative flex items-center px-5 h-[44px] 
+    <div className="relative flex items-center px-5 h-[40px] 
     rounded-[10px] bg-[#fcb8fa] overflow-hidden
     transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
     

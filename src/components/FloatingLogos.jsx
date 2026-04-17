@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { IoMailOutline } from "react-icons/io5";
 
 function FloatingLogos() {
   const containerRef = useRef(null);
@@ -77,23 +78,27 @@ function FloatingLogos() {
 
     <div className="mt-10 flex justify-center gap-4 flex-wrap">
 
-      <a
+  <a
   href="mailto:info@gethyped.nl"
-  className="group inline-flex items-center gap-2 px-6 py-3 border border-black rounded-xl overflow-hidden"
+  className="group relative flex items-center px-5 h-[44px] 
+    rounded-[10px] bg-transparent border border-black overflow-hidden
+    transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+    
+    hover:skew-x-6 hover:-rotate-2 hover:scale-105"
 >
   <div className="flex items-center gap-2 transition-all duration-500 group-hover:-skew-x-6">
 
-  {/* TEXT */}
-  <span>
-    Mail ons direct
-  </span>
+    {/* TEXT */}
+    <span>
+      Mail ons direct
+    </span>
 
-  {/* ICON */}
-  <span className="w-5 h-5 flex items-center justify-center rounded-[6px] text-[10px] bg-black text-white transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:translate-x-1 group-hover:-rotate-12">
-    →
-  </span>
+    {/* ICON */}
+    <span className="w-7 h-7 flex items-center justify-center rounded-[3px] text-[25px] bg-black text-white transition-all duration-300 group-hover:translate-x-1 group-hover:-rotate-12">
+      <IoMailOutline />
+    </span>
 
-</div>
+  </div>
 </a>
 
       <div className="hidden md:block">
