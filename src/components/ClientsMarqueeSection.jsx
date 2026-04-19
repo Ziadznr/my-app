@@ -38,7 +38,7 @@ export default function ClientsMarqueeSection() {
 
         {/* TITLE */}
         <div className="mb-16 max-w-[640px]">
-  <h1 className="text-[50px] md:text-[50px] font-semibold leading-[1.1]">
+  <h1 className="text-[34px] md:text-[50px] font-semibold leading-[1.1] text-[#161616]">
     These brands <br /> got hyped.
   </h1>
 </div>
@@ -47,40 +47,39 @@ export default function ClientsMarqueeSection() {
 
       {/* MARQUEE */}
       <div className="overflow-hidden">
+  <div
+    ref={marqueeRef}
+    className="flex gap-4 md:gap-8 w-max select-none"
+  >
 
-        <div
-          ref={marqueeRef}
-          className="flex gap-8 w-max select-none"
-        >
+    {[...logos, ...logos].map((logo, i) => (
+      <div
+        key={i}
+        className="
+          flex items-center justify-center
+          w-[140px] h-[140px]       /* mobile size */
+          md:w-[260px] md:h-[250px] /* desktop */
 
-          {[...logos, ...logos].map((logo, i) => (
-            <div
-              key={i}
-              className="
-                flex items-center justify-center
-                w-[260px] h-[250px]
-                
-                rounded-[18px]
-                border border-[#cfc7bd]
-                shrink-0
-              "
-            >
-              <img
-                src={logo}
-                alt="client"
-                className="
-                  max-h-[300px]
-                  max-w-[300px]
-                  object-contain
-                "
-                draggable={false}
-              />
-            </div>
-          ))}
-
-        </div>
-
+          rounded-[16px] md:rounded-[18px]
+          border border-[#cfc7bd]
+          shrink-0
+        "
+      >
+        <img
+          src={logo}
+          alt="client"
+          className="
+            max-h-[100px] max-w-[100px]   /* mobile */
+            md:max-h-[300px] md:max-w-[300px] /* desktop */
+            object-contain
+          "
+          draggable={false}
+        />
       </div>
+    ))}
+
+  </div>
+</div>
 
       {/* DIVIDER */}
       <div className="max-w-[1200px] mx-auto px-6 mt-20">

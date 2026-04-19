@@ -26,65 +26,95 @@ const works = [
 
 export default function SelectedWorkSection() {
   return (
-    <section className="py-20 md:py-24 px-5 md:px-16 lg:px-32">
+   <section className="pt-0 pb-36 md:py-24 px-5 md:px-16 lg:px-32">
       <div className="max-w-[1200px] mx-auto">
 
         {/* HEADER */}
         <div className="max-w-[600px] mb-12 md:mb-16">
-          <h2 className="text-[40px] md:text-[60px] lg:text-[70px] font-bold leading-tight">
-            <strong>
-              Content <br />dat scoort.
-            </strong>
-          </h2>
+          <h2 className="text-[50px] md:text-[60px] lg:text-[70px] font-bold leading-tight text-[#161616]">
+    Content <br />
+    dat scoort.
+  </h2>
 
-          <p className="mt-4 text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed">
-            <b>
-              Wij vertellen jouw verhaal. Op <br />
-              een manier die écht past bij jouw <br />
-              doelgroep. Met creatieve content <br />
-              die werkt en het verschil maakt.
-            </b>
-          </p>
+          <p className="mt-4 text-[18px] md:text-[20px] lg:text-[21px] text-[#161616] leading-[1.6] font-medium">
+  Wij vertellen jouw verhaal. Op <br />
+  een manier die écht past bij jouw <br />
+  doelgroep. Met creatieve content <br />
+  die werkt en het verschil maakt.
+</p>
 
           {/* BUTTON */}
-          <button className="group mt-6 inline-block">
-            <div className="relative flex items-center gap-2 px-5 py-3 rounded-[8px] overflow-hidden text-[14px] bg-white text-black border border-black transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:skew-x-4 group-hover:-rotate-1 group-hover:scale-105 group-hover:bg-black group-hover:text-white">
-              
-              <div className="flex items-center gap-2 transition-all duration-500 group-hover:-skew-x-4">
-                <span><b>Bekijk al ons werk</b></span>
+          <button className="group mt-4 inline-block">
+  <div className="inline-flex items-center gap-2 px-3 py-2 rounded-[8px] 
+  text-[13px] bg-white text-black border border-black overflow-hidden
+  transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+  group-hover:skew-x-4 group-hover:-rotate-1 group-hover:scale-105 
+  group-hover:bg-black group-hover:text-white">
 
-                <span className="w-5 h-5 flex items-center justify-center rounded-[6px] text-[10px] bg-black text-white transition-all duration-300 group-hover:bg-white group-hover:text-black">
-                  →
-                </span>
-              </div>
+    <div className="flex items-center gap-2 transition-all duration-500 group-hover:-skew-x-4">
 
-            </div>
-          </button>
+      {/* TEXT */}
+      <span className="font-medium">
+        Bekijk al ons werk
+      </span>
+
+      {/* ICON */}
+      <span className="w-6 h-6 flex items-center justify-center 
+      rounded-[6px] text-[14px] bg-black text-white 
+      transition-all duration-300 group-hover:bg-white group-hover:text-black">
+        →
+      </span>
+
+    </div>
+
+  </div>
+</button>
         </div>
 
         {/* CARDS */}
-     <div className="flex flex-row items-end justify-between gap-4 md:gap-10">
+     <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-6 md:gap-10">
 
   {works.map((item, i) => {
-    let positionClass = "";
+  let positionClass = "";
+  let skewClass = "";
 
-    if (i === 0) {
-      positionClass = "translate-y-6 md:translate-y-12 -rotate-2";
-    } else if (i === 1) {
-      positionClass = "-translate-y-2 md:-translate-y-4 rotate-1";
-    } else if (i === 2) {
-      positionClass = "-translate-y-6 md:-translate-y-12 -rotate-1";
-    }
+  // Desktop stagger (only lg)
+  if (i === 0) {
+    positionClass = "lg:translate-y-12 lg:-rotate-2";
+  } else if (i === 1) {
+    positionClass = "lg:-translate-y-4 lg:rotate-1";
+  } else if (i === 2) {
+    positionClass = "lg:-translate-y-12 lg:-rotate-1";
+  }
 
-    return (
-      <div
-        key={i}
-        className={`flex-1 min-w-0 ${positionClass}`}
-      >
-        <WorkCard item={item} />
-      </div>
-    );
-  })}
+  // Mobile alternating skew
+  if (i % 2 === 0) {
+  skewClass = "skew-x-[2deg] skew-y-[1deg] ml-3";
+} else {
+  skewClass = "skew-x-[-2deg] skew-y-[-1deg] mr-3";
+}
+
+  return (
+    <div
+  key={i}
+  className={`
+    w-[80%] h-[300px] 
+    sm:w-[60%] sm:h-[360px]
+    md:w-auto md:h-auto md:flex-1
+    min-w-0
+
+    mb-14 sm:mb-16   /* more vertical spacing */
+
+    transform ${skewClass}
+    md:skew-x-0 md:skew-y-0 md:ml-0 md:mr-0
+
+    ${positionClass}
+  `}
+>
+      <WorkCard item={item} />
+    </div>
+  );
+})}
 </div>
 
       </div>
@@ -97,19 +127,28 @@ function WorkCard({ item }) {
 
   return (
     <div
-      className={`relative w-full h-[360px] md:h-[420px] rounded-[28px] overflow-hidden border-[6px] ${item.border} shadow-[0_20px_60px_rgba(0,0,0,0.15)]`}
-      onMouseEnter={() => videoRef.current?.play()}
-      onMouseLeave={() => videoRef.current?.pause()}
-    >
-      {/* VIDEO */}
-      <video
-        ref={videoRef}
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover"
-        src={item.video}
-      />
+  className={`relative w-full h-[360px] md:h-[420px] rounded-[28px] overflow-hidden border-[6px] ${item.border} shadow-[0_20px_60px_rgba(0,0,0,0.15)]`}
+  onMouseEnter={() => {
+    if (window.innerWidth >= 768) {
+      videoRef.current?.play();
+    }
+  }}
+  onMouseLeave={() => {
+    if (window.innerWidth >= 768) {
+      videoRef.current?.pause();
+    }
+  }}
+>
+  {/* VIDEO */}
+  <video
+    ref={videoRef}
+    muted
+    loop
+    playsInline
+    autoPlay   // ✅ important for mobile
+    className="w-full h-full object-cover"
+    src={item.video}
+  />
 
       {/* OVERLAY */}
       <div className="absolute bottom-5 left-5 right-5 z-10">

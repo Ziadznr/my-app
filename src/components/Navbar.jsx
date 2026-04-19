@@ -108,11 +108,15 @@ useEffect(() => {
 
         {/* Mobile Button */}
         <button
-          className="md:hidden z-50"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X size={28} /> : <Menu size={28} />}
-        </button>
+  className="md:hidden z-50 w-10 h-10 bg-pink-300 flex items-center justify-center relative rounded"
+  onClick={() => setOpen(!open)}
+>
+  {/* top line */}
+  <span className="absolute w-6 h-[2px] bg-black transform -translate-y-[4px]"></span>
+
+  {/* bottom line */}
+  <span className="absolute w-6 h-[2px] bg-black transform translate-y-[4px]"></span>
+</button>
       </div>
 
       {/* Mobile Fullscreen Menu (IMPORTANT FIX) */}

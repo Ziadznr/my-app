@@ -114,97 +114,49 @@ export default function ExpertiseSection() {
       <div className="relative w-full min-h-screen">
         {data.map((item, i) => (
           <div
-  key={i}
-  className="card absolute inset-0 flex items-center justify-center"
-  style={{ zIndex: i }}
->
-  <div className={`w-full max-w-[1200px] mx-auto rounded-[32px] 
-px-[64px] py-[56px] 
-flex flex-col md:flex-row items-start justify-between gap-[80px] 
-${item.bg} shadow-[0_20px_80px_rgba(0,0,0,0.08)]`}>
+            key={i}
+            className="card absolute inset-0 flex items-center justify-center"
+            style={{ zIndex: i }}
+          >
+            <div
+              className={`w-full max-w-[1200px] mx-auto rounded-[32px] 
+              px-[24px] md:px-[64px] py-[40px] md:py-[56px] 
+              flex flex-col md:flex-row items-start justify-between gap-[40px] md:gap-[80px] 
+              ${item.bg} shadow-[0_20px_80px_rgba(0,0,0,0.08)]`}
+            >
+              {/* LEFT */}
+              <div className="w-full max-w-[520px] relative">
 
-    {/* LEFT */}
-    <div className="max-w-[520px]">
+                {/* NUMBER (mobile top-right) */}
+                <div className="absolute top-0 right-0 md:hidden text-[48px] font-bold text-black/15 leading-none">
+                  {item.number}
+                </div>
 
-  {/* Badge */}
+                {/* Badge */}
+                <div
+                  className={`inline-block text-black px-4 py-1 rounded-[8px] text-[15px] mb-[20px]
+                  ${i === 0 ? "bg-[#e9e4dc]" : "bg-white border border-black/10"}`}
+                >
+                  Expertise
+                </div>
+
+                {/* Title */}
+                <h2 className="text-[42px] md:text-[80px] font-bold leading-[1.05] tracking-[-1px] md:tracking-[-2px] md:whitespace-nowrap">
+  {item.title === "Content creation" ? (
+    <>
+      Content <br className="block md:hidden" />
+      creation
+    </>
+  ) : (
+    item.title
+  )}
+</h2>
+
+                {/* VIDEO (mobile only) */}
+               <div className="block md:hidden mt-6">
   <div
-  className={`inline-block text-black px-4 py-1 rounded-[8px] text-[15px] mb-[28px]
-  ${i === 0 ? "bg-[#e9e4dc]" : "bg-white border border-black/10"}`}
->
-    Expertise
-  </div>
-
-{/* Title */}
-  <h2 className="text-[64px] md:text-[80px] font-bold leading-[1.02] tracking-[-2px]">
-    {item.title}
-  </h2>
-
-<div className="pt-50">
-  
-
-  {/* Subtitle */}
-  <h3 className="mt-[32px] text-[20px] font-semibold">
-    {item.subtitle}
-  </h3>
-
-  {/* Description */}
-  <p className="mt-[12px] text-gray-700 text-[16px] leading-[1.6] max-w-[420px]">
-    {item.desc}
-  </p>
-</div>
-  
-  {/* Button */}
-  <button className="group mt-[20px] inline-block">
-  <div
-    className={`relative flex items-center gap-2 px-4 py-2 rounded-[8px] overflow-hidden
-    text-[13px]
-    transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-    
-    group-hover:skew-x-4 group-hover:-rotate-1 group-hover:scale-105
-    
-    ${i === 0 
-      ? "bg-[#ff4d1c] text-white" 
-      : "bg-white text-black border border-black"
-    }`}
-  >
-
-    {/* INNER */}
-    <div className="flex items-center gap-2 transition-all duration-500 group-hover:-skew-x-4">
-
-      {/* TEXT */}
-      <span>
-        Meer over {item.title.toLowerCase()}
-      </span>
-
-      {/* ICON */}
-      <span
-        className={`w-5 h-5 flex items-center justify-center rounded-[6px] text-[10px]
-        transition-all duration-300
-        ${i === 0 
-          ? "bg-white text-black" 
-          : "bg-black text-white"
-        }`}
-      >
-        →
-      </span>
-
-    </div>
-
-  </div>
-</button>
-
-</div>
-
-  <div className="flex flex-col items-end gap-6">
-
-  {/* NUMBER (top) */}
-  <div className="text-[100px] font-bold text-black/15 leading-none select-none">
-    {item.number}
-  </div>
-
-  {/* VIDEO FRAME (below) */}
-  <div
-    className={`w-[360px] h-[400px] rounded-[24px] overflow-hidden rotate-3 shadow-[0_20px_40px_rgba(0,0,0,0.15)] border-[6px] ${
+    className={`w-[200px] h-[240px] rounded-[20px] overflow-hidden rotate-3 
+    shadow-[0_15px_30px_rgba(0,0,0,0.15)] border-[5px] ${
       i === 0 ? "border-orange-500" : "border-white"
     }`}
   >
@@ -217,12 +169,83 @@ ${item.bg} shadow-[0_20px_80px_rgba(0,0,0,0.08)]`}>
       className="w-full h-full object-cover"
     />
   </div>
+</div>
 
-</div>
-  </div>
-</div>
+                {/* TEXT CONTENT */}
+                <div className="mt-6 md:mt-[120px]">
+
+                  <h3 className="text-[18px] md:text-[20px] font-semibold">
+                    {item.subtitle}
+                  </h3>
+
+                  <p className="mt-[10px] text-gray-700 text-[15px] md:text-[16px] leading-[1.6] max-w-[420px]">
+                    {item.desc}
+                  </p>
+
+                  {/* Button */}
+                  <button className="group mt-[20px] inline-block">
+                    <div
+                      className={`relative flex items-center gap-2 px-4 py-2 rounded-[8px] overflow-hidden
+                      text-[13px]
+                      transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                      group-hover:skew-x-4 group-hover:-rotate-1 group-hover:scale-105
+                      ${
+                        i === 0
+                          ? "bg-[#ff4d1c] text-white"
+                          : "bg-white text-black border border-black"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 transition-all duration-500 group-hover:-skew-x-4">
+                        <span>
+                          Meer over {item.title.toLowerCase()}
+                        </span>
+
+                        <span
+                          className={`w-5 h-5 flex items-center justify-center rounded-[6px] text-[10px]
+                          ${
+                            i === 0
+                              ? "bg-white text-black"
+                              : "bg-black text-white"
+                          }`}
+                        >
+                          →
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              {/* RIGHT (desktop only) */}
+              <div className="hidden md:flex flex-col items-end gap-6">
+
+                {/* NUMBER */}
+                <div className="text-[100px] font-bold text-black/15 leading-none select-none">
+                  {item.number}
+                </div>
+
+                {/* VIDEO */}
+                <div
+                  className={`w-[360px] h-[400px] rounded-[24px] overflow-hidden rotate-3 
+                  shadow-[0_20px_40px_rgba(0,0,0,0.15)] border-[6px] ${
+                    i === 0 ? "border-orange-500" : "border-white"
+                  }`}
+                >
+                  <video
+                    src={item.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </section>
+ 
   );
 }
